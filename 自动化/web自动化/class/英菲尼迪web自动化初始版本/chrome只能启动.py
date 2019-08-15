@@ -4,9 +4,10 @@ from selenium import  webdriver
 from time import sleep
 
 #登陆
-browser = webdriver.Safari()
-browser.get('http://sso.yf.dasouche.net/login.htm?')
-sleep (3)
+chromedriver='/usr/local/bin/ChromeDriver'             #需要添加驱动路径
+browser = webdriver.Chrome(executable_path=chromedriver)
+browser.get('https://sso.yf.dasouche.net/login.htm?')
+sleep(3)
 
 browser.maximize_window()
 
@@ -18,10 +19,6 @@ sleep(2)
 login_button=browser.find_element_by_id('submit-btn')
 login_button.click()
 sleep(10)
-
-
-#点击进入订单管理
-
 
 
 #点击进入客户管理
