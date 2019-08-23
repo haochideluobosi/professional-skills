@@ -7,7 +7,6 @@ from time import sleep
 #进入163邮箱首页
 chromedriver='/usr/local/bin/ChromeDriver'             #需要添加驱动路径
 browser = webdriver.Chrome(executable_path=chromedriver)
-
 browser.get('https://mail.163.com')
 sleep(3)
 
@@ -26,14 +25,21 @@ print(now_handle)  #认为还是在原窗口 (s2:来源页面）
 handles = browser.window_handles
 print(handles)
 for handle in handles:
-    if handle != now_handle:
+    if handle != now_handle:    #当前呈现的窗口不是操作的窗口时
         browser.switch_to.window(handle)
         print(handle)
         sleep(2)
         browser.find_element_by_css_selector('#nameIpt').send_keys('hu18298378148')
         sleep(2)
-
-
+        browser.close()
+#切回到主窗口
+browser.switch_to.window(now_handle)
+print(now_handle)
+browser.find_element_by_id('lbNormal').click()  #点击密码登陆
+sleep(2)
+browser.find_element_by_id('lbApp').click()     #点击扫码登陆
+sleep(2)
+browser.get_screenshot_as_file('/Users/hufengge/Desktop/自动化截屏/扫描二维码登陆.png')
 browser.close()          #关闭浏览器
 
 

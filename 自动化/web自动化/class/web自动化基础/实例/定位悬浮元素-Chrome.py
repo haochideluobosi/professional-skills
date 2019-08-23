@@ -42,4 +42,7 @@ actionChains.move_to_element(setting).perform()
 browser.find_element_by_xpath('//*[@id="wrapper"]/div[6]/a[2]').click()
 #browser.get_screenshot_as_file('/Users/hufengge/Desktop/自动化截屏/关闭预测.png')
 
+
+
+
 browser.close()
